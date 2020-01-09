@@ -12,6 +12,11 @@ public class ProductoNegocio {
 	}
 	public void mostrarProductos() {
 		List<Producto>productos=pd.traerProductos();
-		while(productos.)
+			for(Producto p:productos){
+			System.out.println(p.toString());
+		}
+	}
+	public Producto traerProducto(int idProducto) {
+		return pd.traerProducto(idProducto);
 	}
 }

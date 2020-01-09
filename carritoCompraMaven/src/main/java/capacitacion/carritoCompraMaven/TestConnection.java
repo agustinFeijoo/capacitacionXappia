@@ -32,7 +32,7 @@ public class TestConnection {
 		
 		
 		do{
-			System.out.println("Que desea hacer \n 1 para ver productos \n 2 para ver carrito \n 3 para comprar \n 4 para cancelar");
+			System.out.println("Que desea hacer \n 1 para ver productos \n 2 para ver carrito \n 3 para comprar \n 4 para sacar producto \n 0 para cancelar");
 			entrada=sc.nextLine();
 			try {
 				entradaInt=Integer.parseInt(entrada);				
@@ -43,26 +43,38 @@ public class TestConnection {
 			switch(entradaInt) {
 			case 1:
 				
-				//pn.mostrarProductos();
+				pn.mostrarProductos();
 				
-				//pn.traerProducto(idProducto);
-				
-				//pn.traerAlCarrito();
+			
 			break;
 			case 2:
-				//carritoComprasNegocio.mostrarProductos();
+				carritoComprasNegocio.mostrarProductos();
 			break;
 			
 			case 3:
-				//pn.mostrarProductos();
+				pn.mostrarProductos();
+				System.out.println("Que producto desea comprar?");
 				entrada=sc.nextLine();
 				try {
 					idProducto=Integer.parseInt(entrada);				
 				}catch(NumberFormatException ne){
 					System.out.println("Error,solo pasar numeros");
 				}
-				//carritoComprasNegocio.anadir(idProducto)
+				carritoComprasNegocio.anadir(idProducto)
 			break;
+			case 4: 
+				pn.mostrarProductos();
+				System.out.println("Que producto desea sacar?");
+				try {
+					idProducto=Integer.parseInt(entrada);				
+				}catch(NumberFormatException ne){
+					System.out.println("Error,solo pasar numeros");
+				}
+				carritoComprasNegocio.sacar(idProducto);
+			break;
+			
+					
+			
 			}		
 		}while((entradaInt!=3) && (entradaInt!=4));
 		sc.close();
