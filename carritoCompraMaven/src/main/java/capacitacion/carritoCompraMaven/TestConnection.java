@@ -9,6 +9,10 @@ package capacitacion.carritoCompraMaven;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Scanner;
+
+import negocio.CarritoComprasNegocio;
+import negocio.ProductoNegocio;
 
 
 /**
@@ -18,10 +22,51 @@ import java.sql.SQLException;
 public class TestConnection {
     public static void main(String[] args) {
 		TestConnection obj_DB_Connection = new TestConnection();
+		CarritoComprasNegocio carritoComprasNegocio=new CarritoComprasNegocio();
+		Scanner sc =new Scanner(System.in);
+		int entradaInt=0,idProducto;
+		String entrada;
+		ProductoNegocio pn=new ProductoNegocio();
 		
 		System.out.println(obj_DB_Connection.getConnection());
 		
-		System.out.println("good");
+		
+		do{
+			System.out.println("Que desea hacer \n 1 para ver productos \n 2 para ver carrito \n 3 para comprar \n 4 para cancelar");
+			entrada=sc.nextLine();
+			try {
+				entradaInt=Integer.parseInt(entrada);				
+			}catch(NumberFormatException ne) {
+				System.out.println("Error,solo pasar numeros");
+			}
+			
+			switch(entradaInt) {
+			case 1:
+				
+				//pn.mostrarProductos();
+				
+				//pn.traerProducto(idProducto);
+				
+				//pn.traerAlCarrito();
+			break;
+			case 2:
+				//carritoComprasNegocio.mostrarProductos();
+			break;
+			
+			case 3:
+				//pn.mostrarProductos();
+				entrada=sc.nextLine();
+				try {
+					idProducto=Integer.parseInt(entrada);				
+				}catch(NumberFormatException ne){
+					System.out.println("Error,solo pasar numeros");
+				}
+				//carritoComprasNegocio.anadir(idProducto)
+			break;
+			}		
+		}while((entradaInt!=3) && (entradaInt!=4));
+		sc.close();
+		
 		
 	
 
